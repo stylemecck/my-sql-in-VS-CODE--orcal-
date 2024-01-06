@@ -8,6 +8,6 @@ rating number(3,1));
 
 INSERT INTO movie(m_id, m_name, M_LANGUAGE, GENRE, RATING)
 VALUES
-('M-103', 'Money Hiest: Berlin 2', 'English', 'Romantic-Thrill', 8.2);
+('M-102', 'Money Hiest', 'Hindi', 'Thrill', 7.2);
 
 SELECT *from MOVIE;
