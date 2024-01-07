@@ -19,3 +19,4 @@ CREATE TABLE assign_to(
     FOREIGN KEY (project_id) REFERENCES PROJECT(project_id),
     FOREIGN KEY (emp_id) REFERENCES Employee(emp_id)
 );
+
