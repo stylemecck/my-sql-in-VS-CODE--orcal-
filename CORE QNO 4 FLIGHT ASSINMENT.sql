@@ -7,9 +7,9 @@ CREATE TABLE Flight (
     Price NUMBER(8,3)
 );
 
-alter table flight add primary key (fid);
-ALTER TABLE FLIGHT DROP COLUMN  ARRIVE;
-ALTER TABLE FLIGHT ADD ARRIVE TIMESTAMP;
+-- alter table flight add primary key (fid);
+-- ALTER TABLE FLIGHT DROP COLUMN  ARRIVE;
+-- ALTER TABLE FLIGHT ADD ARRIVE TIMESTAMP;
 
 -- INSERT INTO FLIGHT (fid, F_FROM, T_TO, DEPARTS, ARRIVE, PRICE)
 -- VALUES
@@ -54,6 +54,10 @@ insert into certified values ('p-114', 'F-102');
 insert into certified values ('p-115', 'F-103');
 insert into certified values ('p-117', 'F-103');
 
+insert into certified values ('p-113', 'F-101');
+insert into certified values ('p-113', 'F-103');
+
+
 select *from certified;
 
 -- q1. find fid of the flights such that all pilots certifed to opertate them more than 80000
@@ -76,13 +80,23 @@ where not exists (
 );
 
 -- q2
-select *from pilot 
-join(
-    SELECT pid, count(fid) as num_flight
-    FROM certified 
-    group by pid
-    having num_flight > 3
-)certified on pilot.pid = CERTIFIED.pid;
+-- select *from pilot 
+-- join(
+--     SELECT pid, count(fid) as number_flight
+--     FROM certified 
+--     group by pid
+--     having number_flight > 3
+-- )certified on pilot.pid = certified.pid;
+
+SELECT *
+FROM pilot
+JOIN (
+    SELECT pid, COUNT(fid) as number_flight
+    FROM certified
+    GROUP BY pid
+    HAVING COUNT(fid) > 3
+) certified ON pilot.pid = certified.pid;
+
 
 -- q3.
 SELECT count(*) as total_pilots from pilot;
