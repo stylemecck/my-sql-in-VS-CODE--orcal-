@@ -66,3 +66,7 @@ INSERT INTO assigned_to (project_id, emp_id) values ('POJ-10','EMP-12');
 INSERT INTO assigned_to (project_id, emp_id) values ('POJ-10','EMP-13');
 
 select *from assigned_to;
+
+select e.emp_id, e.emp_name, p.project_id, p.project_name
+from EMPLOYEE e
+INNER JOIN ASSIN
